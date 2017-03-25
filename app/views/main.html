@@ -1,0 +1,48 @@
+<section class="overlay" ng-show="m.loading">
+  <div class="loader">Loading...</div>
+</section>
+<section ng-hide="m.loading" class="ng-hide">
+  <div class="d-inline-block">
+    <label class="control-label">Week Day</label>
+    <br>
+    <div class="btn-group">
+      <label class="btn btn-default active" ng-model="m.filter.weekDay" ng-change="m.weekDayChanged(m.filter.weekDay);" uib-btn-radio="0">Sunday</label>
+      <label class="btn btn-default" ng-model="m.filter.weekDay" ng-change="m.weekDayChanged(m.filter.weekDay);" uib-btn-radio="1">Monday</label>
+      <label class="btn btn-default" ng-model="m.filter.weekDay" ng-change="m.weekDayChanged(m.filter.weekDay);" uib-btn-radio="2">Tuesday</label>
+      <label class="btn btn-default" ng-model="m.filter.weekDay" ng-change="m.weekDayChanged(m.filter.weekDay);" uib-btn-radio="3">Wednesday</label>
+      <label class="btn btn-default" ng-model="m.filter.weekDay" ng-change="m.weekDayChanged(m.filter.weekDay);" uib-btn-radio="4">Thursday</label>
+      <label class="btn btn-default" ng-model="m.filter.weekDay" ng-change="m.weekDayChanged(m.filter.weekDay);" uib-btn-radio="5">Friday</label>
+      <label class="btn btn-default" ng-model="m.filter.weekDay" ng-change="m.weekDayChanged(m.filter.weekDay);" uib-btn-radio="6">Saturday</label>
+    </div>
+  </div>
+  <div class="d-inline-block" style="width: 100px; vertical-align: top;">
+    <label class="control-label">Arrival Hour</label>
+    <select
+    class="form-control"
+    ng-options="hour as hour for hour in m.hours"
+    ng-model="m.filter.arrivalHour"
+    ng-change="m.arrivalHourChanged()"
+    ng-selected="m.filter.arrivalHour"></select>
+  </div>
+  <div class="d-inline-block" style="width: 100px; vertical-align: top;">
+    <label class="control-label">Origin</label>
+    <input type="text" placeholder="ex. JFK" ng-model="m.placeholder.origin" ng-model-options="{}" typeahead-select-on-blur="true" uib-typeahead="origin for origin in m.origins | filter:$viewValue | limitTo:10" typeahead-min-length="1" maxlength="3" class="form-control" typeahead-on-select="m.onOriginSelect($item, $model, $label, $event);" ng-change="m.onOriginInput(m.placeholder.origin);"
+    >
+  </div>
+  <div class="d-inline-block" style="width: 100px; vertical-align: top;">
+    <label class="control-label">Destination</label>
+    <input type="text" placeholder="ex. LAX" ng-model="m.placeholder.dest" ng-model-options="{}" typeahead-select-on-blur="true" uib-typeahead="dest for dest in m.destinations | filter:$viewValue | limitTo:10" typeahead-min-length="1" maxlength="3" class="form-control" typeahead-on-select="m.onDestinationSelect($item, $model, $label, $event);"
+    ng-change="m.onDestinationInput(m.placeholder.destination);">
+  </div>
+  <hr>
+  <p class="lead text-center">Overall Delay Ratio <strong>{{m.overallDelayRatio}}%</strong></p>
+  <div class="row">
+    <div class="col-lg-6">
+      <arrival-delays-chart data="m.filteredFlights">
+      </arrival-delays-chart>
+    </div>
+    <div class="col-lg-6">
+      <flight-delay-ratios-chart data="m.filteredFlights"></flight-delay-ratios-chart>
+    </div>
+  </div>
+</section>
