@@ -7,7 +7,7 @@
  * # arrivalDelaysChart
  */
 angular.module('delaySkipperApp')
-  .directive('arrivalDelaysChart', function(histogram) {
+  .directive('arrivalDelaysChart', ['histogram', function(histogram) {
     return {
       template: '<div></div>',
       restrict: 'E',
@@ -51,4 +51,4 @@ angular.module('delaySkipperApp')
         });
       }
     };
-  });
+  }]);

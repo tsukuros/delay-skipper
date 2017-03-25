@@ -8,7 +8,7 @@
  * Service in the delaySkipperApp.
  */
 angular.module('delaySkipperApp')
-  .service('flightData', function ($http, AIRPORTS) {
+  .service('flightData', ['$http', 'AIRPORTS', function ($http, AIRPORTS) {
     function groupByWeekDay(array){
       var o = {};
       array.forEach(function(item){
@@ -93,4 +93,4 @@ angular.module('delaySkipperApp')
     return {
       get: getFlightsData
     };
-  });
+  }]);

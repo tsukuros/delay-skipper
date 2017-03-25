@@ -8,7 +8,7 @@
  * Controller of the delaySkipperApp
  */
 angular.module('delaySkipperApp')
-  .controller('MainCtrl', function (flightData, flightFilter) {
+  .controller('MainCtrl', ['flightData', 'flightFilter', function (flightData, flightFilter) {
     var m = this, DATA_URL = 'data/flight-delays.csv', flightsGroupedByWeekDay = [];
 
     m.loading = true;
@@ -22,7 +22,7 @@ angular.module('delaySkipperApp')
       weekDay: 0,
       origin: '',
       destination: '',
-      arrivalHour: 12
+      arrivalHour: null
     };
 
     m.weekDayChanged = onFilterUpdate;
@@ -72,4 +72,4 @@ angular.module('delaySkipperApp')
       m.weekDayChanged(m.filter.weekDay);
       m.loading = false;
     });
-  });
+  }]);

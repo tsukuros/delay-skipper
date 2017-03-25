@@ -7,7 +7,7 @@
  * # flightDelayRatiosChart
  */
 angular.module('delaySkipperApp')
-  .directive('flightDelayRatiosChart', function (histogram) {
+  .directive('flightDelayRatiosChart', ['histogram', function (histogram) {
     return {
       template: '<div></div>',
       restrict: 'E',
@@ -52,4 +52,4 @@ angular.module('delaySkipperApp')
         });
       }
     };
-  });
+  }]);
