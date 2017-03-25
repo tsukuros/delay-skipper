@@ -10,6 +10,5 @@
  */
 angular
   .module('delaySkipperApp', [
-    'ngAnimate',
     'ui.bootstrap'
   ]);

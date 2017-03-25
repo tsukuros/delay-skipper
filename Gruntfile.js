@@ -40,8 +40,8 @@ module.exports = function (grunt) {
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js', '!<%= yeoman.app %>/scripts/services/airports.js'],
         tasks: [
-          'newer:jshint:all',
-          'newer:jscs:all'
+          // 'newer:jshint:all',
+          // 'newer:jscs:all'
         ],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -50,7 +50,7 @@ module.exports = function (grunt) {
       jsTest: {
         files: ['test/spec/{,*/}*.js'],
         tasks: [
-          'newer:jshint:test', 'newer:jscs:test', 'karma'
+          // 'newer:jshint:test', 'newer:jscs:test', 'karma'
         ]
       },
       styles: {
