@@ -12,6 +12,7 @@ angular.module('delaySkipperApp')
     /**
      * Get histogram data out of xy data
      * @param   {Array} data  Array of tuples [x, y]
+     * @param   {String} Object property to group by
      * @param   {Number} step Resolution for the histogram
      * @returns {Array}       Histogram data
      */

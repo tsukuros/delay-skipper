@@ -9,7 +9,7 @@
  */
 angular.module('delaySkipperApp')
   .controller('MainCtrl', ['flightData', 'flightFilter', function (flightData, flightFilter) {
-    var m = this, DATA_URL = 'https://raw.githubusercontent.com/tsukuros/delay-skipper/gh-pages/data/flight-delays.csv', flightsGroupedByWeekDay = [];
+    var m = this, DATA_URL = 'https://raw.githubusercontent.com/tsukuros/delay-skipper/master/app/data/flight-delays.csv', flightsGroupedByWeekDay = [];
 
     m.loading = true;
     m.overallDelayRatio = 0;
@@ -65,7 +65,7 @@ angular.module('delaySkipperApp')
       return (Math.round((total / data.length) * 100) / 100);
     }
 
-    flightData.get(DATA_URL, 1, 10000).then(function(res){
+    flightData.get(DATA_URL, 1, 100000).then(function(res){
       flightsGroupedByWeekDay = res.flightsByWeekDay;
       m.origins = res.origins;
       m.destinations = res.destinations;
