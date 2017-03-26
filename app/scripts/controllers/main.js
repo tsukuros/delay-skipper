@@ -22,7 +22,7 @@ angular.module('delaySkipperApp')
       weekDay: 0,
       origin: '',
       destination: '',
-      arrivalHour: null
+      arrivalHour: 1
     };
 
     m.weekDayChanged = onFilterUpdate;
@@ -65,7 +65,7 @@ angular.module('delaySkipperApp')
       return (Math.round((total / data.length) * 100) / 100);
     }
 
-    flightData.get(DATA_URL, 1, 100000).then(function(res){
+    flightData.get(DATA_URL).then(function(res){
       flightsGroupedByWeekDay = res.flightsByWeekDay;
       m.origins = res.origins;
       m.destinations = res.destinations;

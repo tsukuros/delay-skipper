@@ -29,12 +29,13 @@ angular.module('delaySkipperApp')
 
     function getFlightsData(url, start_index, end_index){
       var slice_args = [], origins_array = [], destinations_array = [];
-      slice_args[0] = start_index ? start_index : 0;
+      slice_args[0] = start_index ? start_index : 1;
       if (end_index) { slice_args.push(end_index); }
 
       return $http.get(url)
         .then(function(res){
           var lines = res.data.split('\n');
+          if (!end_index) { lines.pop(); }
           var chunk = [].slice.apply(lines, slice_args);
           var flights = chunk.map(function(item){
             var values = item.split(','),
